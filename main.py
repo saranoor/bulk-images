@@ -8,7 +8,6 @@ from google.genai import types
 from PIL import Image
 from io import BytesIO
 import streamlit as st
-import google.generativeai as genai
 
 api_key = st.secrets["GEMINI_API_KEY"]
 client = genai.configure(api_key=api_key)
