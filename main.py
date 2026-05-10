@@ -7,9 +7,15 @@ from google import genai
 from google.genai import types
 from PIL import Image
 from io import BytesIO
+import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configure your API Key
-client = genai.Client(api_key="AIzaSyBHoSzmOnbi-KI3CRe4gsHFpzpVXMJA2Vw")
+# client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+api_key = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
+client = genai.Client(api_key=api_key)
 
 
 def generate_image(
@@ -48,8 +54,8 @@ def generate_image(
                     print("[backend] Received text part from Gemini:")
                     print(part.text)
                 elif part.inline_data is not None:
-                    image = part.as_image()
-                    image.save(f"{filename}")
+                    # image = part.as_image()
+                    # image.save(f"{filename}")
                     return part.inline_data.data
 
         except Exception as e:
