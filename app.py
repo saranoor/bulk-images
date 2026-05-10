@@ -127,7 +127,7 @@ if "generating" not in st.session_state:
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 🎨 Image Studio")
+    st.markdown("## 🎨 James Image Studio")
     st.markdown("---")
 
     st.markdown("### Settings")
@@ -160,7 +160,7 @@ with st.sidebar:
     )
 
 # ── Main area ─────────────────────────────────────────────────────────────────
-st.markdown("# Image Prompt Studio")
+st.markdown("#James Image Prompt Studio")
 st.markdown(
     '<p style="color:#666;margin-top:-12px;">Type 5–10 image prompts below and generate them all at once.</p>',
     unsafe_allow_html=True,
