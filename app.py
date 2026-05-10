@@ -155,12 +155,12 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown(
-        '<p style="font-size:0.75rem;color:#444;">Enter 5–10 prompts, one per line. Each prompt generates one image.</p>',
+        '<p style="font-size:0.75rem;color:#444;">Enter 1–10 prompts, one per line. Each prompt generates one image.</p>',
         unsafe_allow_html=True,
     )
 
 # ── Main area ─────────────────────────────────────────────────────────────────
-st.markdown("# James Image Prompt Studio")
+st.markdown("# Image Prompt Studio")
 st.markdown(
     '<p style="color:#666;margin-top:-12px;">Type 5–10 image prompts below and generate them all at once.</p>',
     unsafe_allow_html=True,
@@ -196,7 +196,7 @@ for msg in st.session_state.messages:
 st.markdown("### Your prompts")
 raw_input = st.text_area(
     label="prompts",
-    placeholder="A misty mountain range at golden hour\nA cyberpunk cat in neon-lit alley\nVintage library with floating books\n...",
+    placeholder="A misty mountain range at golden hour\nA cyberpunk cat in neon-lit alley\nVintage library with floating books\n...\n(1–10 prompts, one per line)",
     height=200,
     label_visibility="collapsed",
 )
@@ -209,12 +209,7 @@ col_info, col_btn = st.columns([3, 1])
 with col_info:
     if count == 0:
         st.markdown(
-            '<p class="prompt-counter">Enter 5–10 prompts, one per line</p>',
-            unsafe_allow_html=True,
-        )
-    elif count < 2:
-        st.markdown(
-            f'<p class="prompt-counter" style="color:#e07070;">{count} prompt{"s" if count!=1 else ""} — need at least 5</p>',
+            '<p class="prompt-counter">Enter 1–10 prompts, one per line</p>',
             unsafe_allow_html=True,
         )
     elif count > 10:
@@ -224,12 +219,12 @@ with col_info:
         )
     else:
         st.markdown(
-            f'<p class="prompt-counter" style="color:#7ab87a;">✓ {count} prompts ready</p>',
+            f'<p class="prompt-counter" style="color:#7ab87a;">✓ {count} prompt{"s" if count!=1 else ""} ready</p>',
             unsafe_allow_html=True,
         )
 
 with col_btn:
-    can_generate = 2 <= count <= 10 and not st.session_state.generating
+    can_generate = 1 <= count <= 10 and not st.session_state.generating
     generate_clicked = st.button(
         "✦ Generate", disabled=not can_generate, use_container_width=True
     )
