@@ -7,9 +7,11 @@ from google import genai
 from google.genai import types
 from PIL import Image
 from io import BytesIO
+import streamlit as st
+import google.generativeai as genai
 
-# Configure your API Key
-client = genai.configure(api_key="GEMINI_API_KEY")
+api_key = st.secrets["GEMINI_API_KEY"]
+client = genai.configure(api_key=api_key)
 
 
 def generate_image(
