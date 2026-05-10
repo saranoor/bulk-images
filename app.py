@@ -1,5 +1,5 @@
 import streamlit as st
-import backend
+import main
 
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -247,9 +247,7 @@ if generate_clicked and can_generate:
     images = []
     for i, prompt in enumerate(prompts):
         progress.progress((i) / count, text=f"Generating {i+1}/{count}: {prompt[:40]}…")
-        img = backend.generate_image(
-            prompt, filename=f"image_{i}.png", width=w, height=h
-        )
+        img = main.generate_image(prompt, filename=f"image_{i}.png", width=w, height=h)
         images.append(img)
 
     progress.progress(1.0, text="Done!")
